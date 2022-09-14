@@ -1,0 +1,5 @@
+export const CounterEvent = {
+  IS_RUNNING_CHANGED: "CounterEvent.IS_RUNNING_CHANGED",
+  CURRENT_WIN_CHANGED: "CounterEvent.CURRENT_WIN_CHANGED",
+  IS_BLANK_CHANGED: "CounterEvent.IS_BLANK_CHANGED",
+}
