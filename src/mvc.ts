@@ -1,6 +1,6 @@
 import {ModelBase} from "./utils/mvc/ModelBase";
-import {diInject} from "./utils/di/diInject";
-import {diMap} from "./utils/di/diMap";
+import {dInject} from "./utils/di/dInject";
+import {dMap} from "./utils/di/dMap";
 
 const jQuery = require("jquery");
 
@@ -21,7 +21,7 @@ class SceneModel extends ModelBase {
 
 export class SceneView {
 
-  protected model: SceneModel = diInject(SceneModel);
+  protected model: SceneModel = dInject(SceneModel);
 
   public winTitle;
   public incButton;
@@ -35,13 +35,13 @@ export class SceneView {
     this.winTitle = jQuery("#winTitle");
     this.incButton = jQuery("#incBtn");
 
-    this.controller = diInject(SceneController, [this]); // add controller (mediator)
+    this.controller = dInject(SceneController, [this]); // add controller (mediator)
   }
 
 }
 
 export class SceneController {
-  protected model: SceneModel = diInject(SceneModel);
+  protected model: SceneModel = dInject(SceneModel);
 
   constructor(protected view: SceneView) {
     this.initialize();
@@ -49,7 +49,7 @@ export class SceneController {
 
   initialize(): void {
     this.view.incButton.on("click", () => {
-      (diInject(SceneModel) as SceneModel).setCurrentWin(this.model.currentWin + 1);
+      (dInject(SceneModel) as SceneModel).setCurrentWin(this.model.currentWin + 1);
     });
 
     this.model.addListener(SceneEvent.CURRENT_WIN_CHANGED, (currentWin: number) => {
@@ -60,9 +60,9 @@ export class SceneController {
 }
 
 // map classes for injector
-diMap(SceneModel).asSingletone();
-diMap(SceneView).asSingletone();
-diMap(SceneController).asSingletone();
+dMap(SceneModel).asSingletone();
+dMap(SceneView).asSingletone();
+dMap(SceneController).asSingletone();
 
 // instantiate Scene
-diInject(SceneView);
+dInject(SceneView);

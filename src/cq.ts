@@ -1,8 +1,8 @@
-import {diInject} from "./utils/di/diInject";
+import {dInject} from "./utils/di/dInject";
 import {PersistentCommandQueue} from "./utils/commands/PersistentCommandQueue";
 import {SingleRunCommandQueue} from "./utils/commands/SingleRunCommandQueue";
 import {CommandResolveBase} from "./utils/commands/CommandResolveBase";
-import {diMap} from "./utils/di/diMap";
+import {dMap} from "./utils/di/dMap";
 
 const jQuery = require("jquery");
 
@@ -26,11 +26,11 @@ class SceneView {
     this.persistentButton = jQuery("#persistentBtn");
     this.singleButton = jQuery("#singleBtn");
 
-    this.persistentQueue.add(diInject(SetButtonsEnabledCmd, [false]))
+    this.persistentQueue.add(dInject(SetButtonsEnabledCmd, [false]))
     Array.from({length: 10}).forEach(() => {
-      this.persistentQueue.add(diInject(IncrementCounterCmd));
+      this.persistentQueue.add(dInject(IncrementCounterCmd));
     });
-    this.persistentQueue.add(diInject(SetButtonsEnabledCmd, [true]));
+    this.persistentQueue.add(dInject(SetButtonsEnabledCmd, [true]));
 
     this.persistentButton.on("click", () => {
       this.persistentQueue.reset();
@@ -38,11 +38,11 @@ class SceneView {
     });
 
     this.singleButton.on("click", () => {
-      this.singleRunQueue.add(diInject(SetButtonsEnabledCmd, [false]))
+      this.singleRunQueue.add(dInject(SetButtonsEnabledCmd, [false]))
       Array.from({length: 10}).forEach(() => {
-        this.singleRunQueue.add(diInject(IncrementCounterCmd, [-1]));
+        this.singleRunQueue.add(dInject(IncrementCounterCmd, [-1]));
       });
-      this.singleRunQueue.add(diInject(SetButtonsEnabledCmd, [true]));
+      this.singleRunQueue.add(dInject(SetButtonsEnabledCmd, [true]));
       this.singleRunQueue.run();
     });
 
@@ -57,7 +57,7 @@ class SetButtonsEnabledCmd  extends CommandResolveBase{
   }
 
   protected internalRun(): void {
-    const scene: SceneView = diInject(SceneView);
+    const scene: SceneView = dInject(SceneView);
     scene.persistentButton.prop("disabled", !this.enabled);
     scene.singleButton.prop("disabled", !this.enabled);
     this.internalResolve();
@@ -72,7 +72,7 @@ class IncrementCounterCmd extends CommandResolveBase {
   }
 
   protected internalRun(): void {
-    const scene: SceneView = diInject(SceneView);
+    const scene: SceneView = dInject(SceneView);
     scene.counter += this.delta;
     scene.winTitle.text(scene.counter);
     setTimeout(() => {
@@ -83,9 +83,9 @@ class IncrementCounterCmd extends CommandResolveBase {
 }
 
 // map classes for injector
-diMap(SceneView).asSingletone();
-diMap(SetButtonsEnabledCmd);
-diMap(IncrementCounterCmd);
+dMap(SceneView).asSingletone();
+dMap(SetButtonsEnabledCmd);
+dMap(IncrementCounterCmd);
 
 // instantiate Scene
-diInject(SceneView);
+dInject(SceneView);

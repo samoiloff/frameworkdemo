@@ -1,6 +1,7 @@
 import {CounterTimerController} from "./CounterTimerController";
 import {CounterLabelController} from "./CounterLabelController";
 import {ControllersBase} from "../../utils/mvc/ControllersBase";
+import {dInject} from "../../utils/di/dInject";
 
 /**
  * no class shall control controller via link, since they contain business logic
@@ -16,8 +17,8 @@ export class CounterController extends ControllersBase {
    */
   initialize(): void {
     super.initialize();
-    this.addController(CounterTimerController);
-    this.addController(CounterLabelController);
+    this.addController(dInject(CounterTimerController, [this.model, this.view]));
+    this.addController(dInject(CounterLabelController, [this.model, this.view]));
   }
 
 }

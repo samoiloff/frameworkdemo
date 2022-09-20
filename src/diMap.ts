@@ -1,16 +1,16 @@
 // in core library
-import {diInject} from "./utils/di/diInject";
-import {diMap} from "./utils/di/diMap";
+import {dInject} from "./utils/di/dInject";
+import {dMap} from "./utils/di/dMap";
 
 class BaseModel {
   message: string = "Hello from Base Model";
 }
-diMap(BaseModel).asSingletone(); // register injection of BaseClass
+dMap(BaseModel).asSingletone(); // register injection of BaseClass
 // in game code
 class GameModel extends BaseModel {
   message: string = "Hello from Game Model"
 }
-diMap(BaseModel).toClass(GameModel); // map injection to child class
+dMap(BaseModel).toClass(GameModel); // map injection to child class
 //
-console.log(diInject(BaseModel).message); // outputs "Hello from Game Model";
-// all instantiations via diInject(BaseModel) will return GameModel
+console.log(dInject(BaseModel).message); // outputs "Hello from Game Model";
+// all instantiations via dInject(BaseModel) will return GameModel

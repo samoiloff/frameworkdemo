@@ -1,9 +1,9 @@
-import {diMap} from "./utils/di/diMap";
-import {diInject} from "./utils/di/diInject";
+import {dMap} from "./utils/di/dMap";
+import {dInject} from "./utils/di/dInject";
 
 class BaseModel {
   message: string = "Hello from BaseModel";
 }
-diMap(BaseModel).asSingletone(); // register injection of BaseClass
+dMap(BaseModel).asSingletone(); // register injection of BaseClass
 //
-console.log(diInject(BaseModel).message); // outputs "Hello from BaseModel";
+console.log(dInject(BaseModel).message); // outputs "Hello from BaseModel";

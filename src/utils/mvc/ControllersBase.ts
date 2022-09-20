@@ -1,42 +1,30 @@
 import {ControllerBase} from "./ControllerBase";
-import {ModelBase} from "./ModelBase";
-import {ViewBase} from "./ViewBase";
 
 export abstract class ControllersBase extends ControllerBase {
 
-    protected controllers: Record<any, ControllerBase>;
-
-    constructor(model: ModelBase, view: ViewBase) {
-        super(model, view);
-    }
+    protected controllers: ControllerBase[];
 
     initialize() {
-        this.controllers = {};
+        this.controllers = [];
     }
 
-    addController(controllerCls: new (model: ModelBase, view: ViewBase) => ControllerBase): void {
-        const controller: ControllerBase = controllerCls[controllerCls.toString()];
-        if (controller) {
-            throw new Error(this + " already has controller with name : " + controller);
-        } else {
-            this.controllers[controllerCls.toString()] = new controllerCls(this.model, this.view);
+    addController(controller: ControllerBase): void {
+        this.controllers.push(controller);
+        controller.initialize();
+    }
+
+    removeController(controller: ControllerBase): void {
+        const controllerIndex: number = this.controllers.indexOf(controller);
+        if (controllerIndex >= 0) {
+            this.controllers.splice(controllerIndex, 1);
         }
-    }
-
-    removeController(controllerCls: new (model: ModelBase, view: ViewBase) => ControllerBase): void {
-        const controller: ControllerBase = controllerCls[controllerCls.toString()];
-        controller.destroy();
-        delete controllerCls[controllerCls.toString()];
     }
 
     removeAllControllers(): void {
-        for (const field of Object.keys(this.controllers)) {
-            const controller: ControllerBase = this.controllers[field];
-            if (controller) {
-                controller.destroy();
-                delete this.controllers[field];
-            }
-        }
+        this.controllers.forEach((controller) => {
+            controller.destroy();
+        });
+        this.controllers = [];
     }
 
 }
