@@ -17,7 +17,9 @@ module.exports = {
     context: ROOT,
     mode,
     entry: {
-        "main": path.resolve(SRC,'main.ts'),
+        "index": path.resolve(SRC,'index.ts'),
+        "mvc": path.resolve(SRC,'mvc.ts'),
+        "cq": path.resolve(SRC,'cq.ts'),
     },
     output: {
         filename: '[name].bundle.js',

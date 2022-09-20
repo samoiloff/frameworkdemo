@@ -1,6 +1,6 @@
-import {ControllersBase} from "../../common/mvc/ControllersBase";
 import {CounterTimerController} from "./CounterTimerController";
 import {CounterLabelController} from "./CounterLabelController";
+import {ControllersBase} from "../../utils/mvc/ControllersBase";
 
 /**
  * no class shall control controller via link, since they contain business logic

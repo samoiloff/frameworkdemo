@@ -1,4 +1,6 @@
-import {IContextData, InjectionData} from "./definitions";
+import Logger from "../Logger";
+import {IContextData} from "../definitions";
+import {InjectionData} from "./InjectionData";
 
 /**
  * Depencency Injection Context. It stores Injections.
@@ -25,15 +27,25 @@ export class DiContext {
   }
 
   protected createInstance(injection: InjectionData, initParams?: any[]): any {
+    let params: any[];
     if (initParams) {
-      return new injection.instanceCls(... initParams);
+      params = initParams;
     } else {
       if (injection.initParams) {
-        return new injection.instanceCls(... injection.initParams);
-      } else {
-        return new injection.instanceCls();
+        params = injection.initParams;
       }
     }
+
+    let instance: any;
+    if (params) {
+      instance = new injection.instanceCls(... params);
+    } else {
+      instance = new injection.instanceCls();
+    }
+
+    Logger.mapObjectToGlobalId(instance, "d");
+
+    return instance;
   }
 
 }

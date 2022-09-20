@@ -1,5 +1,5 @@
-import {ModelBase} from "../common/mvc/ModelBase";
 import {CounterEvent} from "./CounterEvent";
+import {ModelBase} from "../utils/mvc/ModelBase";
 
 /**
  * usually development starts with model.
@@ -13,8 +13,6 @@ export class CounterModel extends ModelBase {
 
   constructor() {
     super();
-    this.logEventsEnabled = true; // enable logging
-    this.instanceId = "CounterModel"; // for logging
   }
 
   setIsRunning(value: boolean): void {

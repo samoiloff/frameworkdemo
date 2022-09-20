@@ -1,7 +1,7 @@
-import {ControllerBase} from "../../common/mvc/ControllerBase";
 import {CounterModel} from "../CounterModel";
 import {CounterEvent} from "../CounterEvent";
 import {CounterView} from "../CounterView";
+import {ControllerBase} from "../../utils/mvc/ControllerBase";
 
 export class CounterLabelController extends ControllerBase {
 

@@ -1,6 +1,6 @@
-import {ControllerBase} from "../../common/mvc/ControllerBase";
 import {CounterEvent} from "../CounterEvent";
 import {CounterModel} from "../CounterModel";
+import {ControllerBase} from "../../utils/mvc/ControllerBase";
 
 export class CounterTimerController extends ControllerBase {
 

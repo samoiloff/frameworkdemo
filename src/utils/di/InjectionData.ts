@@ -1,5 +1,8 @@
-import {DiContext} from "../di/DiContext";
+import Logger from "../Logger";
 
+/**
+ * The injection piece of data. Stores data of single injection.
+ */
 export class InjectionData {
   keyCls: any;
   instanceCls: any;
@@ -22,6 +25,12 @@ export class InjectionData {
     return this;
   }
 
+  toInstance(value: any): InjectionData {
+    this.isSingletone = true;
+
+    this.instance = value;
+    Logger.mapObjectToGlobalId(this.instance, "d");
+    return this;
+  }
+
 }
-export type IContextData = Map<any, InjectionData>;
-export type IContexts = Map<string, DiContext>;

@@ -1,5 +1,6 @@
 import {DiContext} from "./DiContext";
-import {IContexts, InjectionData} from "./definitions";
+import {IContexts} from "../definitions";
+import {InjectionData} from "./InjectionData";
 
 /**
  * Depencency Injections Context Manager

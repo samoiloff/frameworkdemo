@@ -1,5 +1,6 @@
-import {ViewBase} from "../common/mvc/ViewBase";
+
 import {CounterModel} from "./CounterModel";
+import {ViewBase} from "../utils/mvc/ViewBase";
 const jQuery = require("jquery");
 
 /**

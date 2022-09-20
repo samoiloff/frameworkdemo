@@ -12,6 +12,7 @@ import {DiContextManager} from "./DiContextManager";
  * @param context - context of injection, required when you want to separate
  * injections in several contexts
  */
-export default (cls: any, initData?: any[], context?: string): any => {
+
+export const diInject = (cls: any, initData?: any[], context?: string): any => {
   return DiContextManager.inject(cls, initData, context);
-}
+};

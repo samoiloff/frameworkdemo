@@ -1,5 +1,5 @@
 import {DiContextManager} from "./DiContextManager";
-import {InjectionData} from "./definitions";
+import {InjectionData} from "./InjectionData";
 
 /**
  * Simplified Depencency Injection Pattern Realization
@@ -20,6 +20,6 @@ import {InjectionData} from "./definitions";
  * @param context - context of injection, required when you want to separate
  * injections in several contexts
  */
-export default (cls: any, context: string = null): InjectionData => {
+export const diMap = (cls: any, context: string = null): InjectionData => {
   return DiContextManager.map(cls, context);
 }

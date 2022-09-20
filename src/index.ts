@@ -1,9 +1,9 @@
-import diMap from "./common/di/diMap";
 import {CounterModel} from "./counter/CounterModel";
 import {CounterView} from "./counter/CounterView";
 import {CounterController} from "./counter/controllers/CounterController";
 import {Counter} from "./counter/Counter";
-import diInject from "./common/di/diInject";
+import {diMap} from "./utils/di/diMap";
+import {diInject} from "./utils/di/diInject";
 
 /**
  * map model, view, controller and component as singletones,
