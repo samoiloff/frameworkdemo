@@ -26,9 +26,6 @@ class SceneView {
     this.persistentButton = jQuery("#persistentBtn");
     this.singleButton = jQuery("#singleBtn");
 
-    this.persistentQueue = new PersistentCommandQueue();
-    this.singleRunQueue = new SingleRunCommandQueue();
-
     this.persistentQueue.add(diInject(SetButtonsEnabledCmd, [false]))
     Array.from({length: 10}).forEach(() => {
       this.persistentQueue.add(diInject(IncrementCounterCmd));

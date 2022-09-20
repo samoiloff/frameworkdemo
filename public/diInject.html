@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Test App</title>
+  <script>
+    function onLoad() {
+      var scriptElement=document.createElement("script");
+      scriptElement.type = "text/javascript";
+      scriptElement.src = "./diInject.bundle.js";
+      document.head.appendChild(scriptElement);
+    }
+  </script>
+  <STYLE>
+    .elem {
+      margin: 10px;
+    }
+  </STYLE>
+  </head>
+<body onload="onLoad()">
+<noscript>Sorry. JavaScript is not supported in this browser.</noscript>
+<div class="game-wrapper phantom-wrapper"></div>
+</body>
+</html>

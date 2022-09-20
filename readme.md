@@ -17,4 +17,6 @@
 - http://localhost:8082/ - to test index.ts
 - http://localhost:8082/mvc.html - to test mvc.ts (MVC in single file)
 - http://localhost:8082/cq.html - to test cq.ts (Command Queue in single file)
+- http://localhost:8082/diInject.html - to test diInject.ts (How Injection works)
+- http://localhost:8082/diMap.html - to test diMap.ts (How Injection override works)
 

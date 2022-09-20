@@ -20,6 +20,8 @@ module.exports = {
         "index": path.resolve(SRC,'index.ts'),
         "mvc": path.resolve(SRC,'mvc.ts'),
         "cq": path.resolve(SRC,'cq.ts'),
+        "diInject": path.resolve(SRC,'diInject.ts'),
+        "diMap": path.resolve(SRC,'diMap.ts'),
     },
     output: {
         filename: '[name].bundle.js',
