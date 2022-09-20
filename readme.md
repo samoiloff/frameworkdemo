@@ -13,5 +13,8 @@
 
 1. npm i
 2. npm start
-3. open http://localhost:8082/
+3. open:
+- http://localhost:8082/ - to test index.ts
+- http://localhost:8082/mvc.html - to test mvc.ts (MVC in single file)
+- http://localhost:8082/cq.html - to test cq.ts (Command Queue in single file)
 
