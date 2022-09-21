@@ -1,32 +1,34 @@
 export default class Logger {
-    private static isShowLog: boolean = true;
-    public static toggleLog(enable: boolean) {
+
+    static readonly MAP_KEY = "__windowId__";
+
+    static toggleLog(enable: boolean) {
         this.isShowLog = enable;
     }
 
-    public static getIsShowLog(): boolean {
+    static getIsShowLog(): boolean {
         return this.isShowLog;
     }
 
-    public static debug(...args: any[]) {
+    static debug(...args: any[]) {
         if (this.isShowLog) {
             console.debug(`[DEBUG]`, ...args);
         }
     }
 
-    public static log(...args: any[]) {
+    static log(...args: any[]) {
         if (this.isShowLog) {
             console.log(`[LOG]`, ...args);
         }
     }
 
-    public static warn(...args: any[]) {
+    static warn(...args: any[]) {
         if (this.isShowLog) {
             console.warn(`[WARN]`, ...args);
         }
     }
 
-    public static error(...args: any[]) {
+    static error(...args: any[]) {
         console.trace('ERROR Happen ....');
         console.error(`[ERROR]`, ...args);
     }
@@ -36,7 +38,7 @@ export default class Logger {
      * @param event
      * @param data
      */
-    public static logEvent(dispatcher: any, event: string, data?: any): void {
+    static logEvent(dispatcher: any, event: string, data?: any): void {
         if (this.isShowLog) {
             console.groupCollapsed(`${dispatcher.constructor.name}: ${event.toString()}`);
             console.log("data : " + (data !== null ? data : "null"));
@@ -45,7 +47,7 @@ export default class Logger {
         }
     }
 
-    static readonly MAP_KEY = "__windowId__";
+
 
     static mapObjectToGlobalId(object: any, prefix: string): void {
         if (this.isShowLog) {
@@ -65,4 +67,6 @@ export default class Logger {
             }
         }
     }
+
+    private static isShowLog: boolean = true;
 }

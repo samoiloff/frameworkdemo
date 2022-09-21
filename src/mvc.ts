@@ -20,11 +20,10 @@ class SceneModel extends ModelBase {
 }
 
 export class SceneView {
+  winTitle: any;
+  incButton: any;
 
   protected model: SceneModel = dInject(SceneModel);
-
-  public winTitle;
-  public incButton;
 
   private controller: SceneController;
 

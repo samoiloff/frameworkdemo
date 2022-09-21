@@ -22,6 +22,7 @@ module.exports = {
         "cq": path.resolve(SRC,'cq.ts'),
         "diInject": path.resolve(SRC,'diInject.ts'),
         "diMap": path.resolve(SRC,'diMap.ts'),
+        "phaser": path.resolve(SRC,'phaser.ts'),
     },
     output: {
         filename: '[name].bundle.js',

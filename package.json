@@ -23,6 +23,7 @@
   "dependencies": {
     "@types/jquery": "3.5.14",
     "eventemitter3": "4.0.7",
-    "jquery": "3.6.1"
+    "jquery": "3.6.1",
+    "phaser": "3.55.2"
   }
 }

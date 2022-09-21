@@ -1,5 +1,11 @@
 {
   "compilerOptions": {
+    "typeRoots": [
+      "./node_modules/phaser/types"
+    ],
+    "types": [
+      "Phaser"
+    ],
     "target": "es5",
     "module": "commonjs",
     "lib": [

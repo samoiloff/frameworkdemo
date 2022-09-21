@@ -8,11 +8,11 @@ const jQuery = require("jquery");
 
 class SceneView {
 
-  public counter: number = 0;
+  counter: number = 0;
 
-  public winTitle;
-  public persistentButton;
-  public singleButton;
+  winTitle;
+  persistentButton;
+  singleButton;
 
   private persistentQueue: PersistentCommandQueue = new PersistentCommandQueue();
   private singleRunQueue: SingleRunCommandQueue = new SingleRunCommandQueue();
@@ -50,7 +50,7 @@ class SceneView {
 
 }
 
-class SetButtonsEnabledCmd  extends CommandResolveBase{
+class SetButtonsEnabledCmd  extends CommandResolveBase {
 
   constructor(protected enabled: boolean) {
     super();
