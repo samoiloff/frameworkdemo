@@ -1,7 +1,7 @@
 import {SceneControllerBase} from "../../Scenes/controllers/SceneControllerBase";
 import {GambleScene} from "../scenes/GambleScene";
 import {GambleModel} from "../model/GambleModel";
-import {dInject} from "../../utils/di/dInject";
+import {dGet} from "../../utils/di/dGet";
 import {GambleEvent} from "../events/GambleEvent";
 import {SceneKey} from "../scenes/SceneKey";
 import {GambleView} from "../view/GambleView";
@@ -9,8 +9,8 @@ import {GambleView} from "../view/GambleView";
 export class GambleSceneController extends SceneControllerBase {
 
   scene: GambleScene;
-  model: GambleModel = dInject(GambleModel);
-  view: GambleView = dInject(GambleView);
+  model: GambleModel = dGet(GambleModel);
+  view: GambleView = dGet(GambleView);
 
   initialize(): void {
     this.model.addListener(GambleEvent.RED_CLICK, this.onChoiceClick, this);

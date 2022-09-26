@@ -1,6 +1,6 @@
 import {MvcScene} from "../../Scenes/MvcScene";
 import {GambleSceneController} from "../controller/GambleSceneController";
-import {dInject} from "../../utils/di/dInject";
+import {dGet} from "../../utils/di/dGet";
 import {SceneKey} from "./SceneKey";
 import {GambleView} from "../view/GambleView";
 import {GambleModel} from "../model/GambleModel";
@@ -10,8 +10,8 @@ import {TextUtils} from "../utils/TextUtils";
 
 export class GambleScene extends MvcScene {
 
-  protected view: GambleView = dInject(GambleView);
-  protected model: GambleModel = dInject(GambleModel);
+  protected view: GambleView = dGet(GambleView);
+  protected model: GambleModel = dGet(GambleModel);
 
   protected balanceText: Phaser.GameObjects.Text;
 
@@ -20,7 +20,7 @@ export class GambleScene extends MvcScene {
       key: SceneKey.GAMBLE_SCENE,
     });
 
-    this.addController(dInject(GambleSceneController, [this]));
+    this.addController(dGet(GambleSceneController, [this]));
   }
 
   create() {

@@ -3,7 +3,7 @@ import {Gamble} from "./gamble/Gamble";
 import {GambleView} from "./gamble/view/GambleView";
 import {GambleController} from "./gamble/controller/GambleController";
 import {GambleModel} from "./gamble/model/GambleModel";
-import {dInject} from "./utils/di/dInject";
+import {dGet} from "./utils/di/dGet";
 import {GambleSceneController} from "./gamble/controller/GambleSceneController";
 import {BootSceneController} from "./gamble/controller/BootSceneController";
 import {ResultSceneController} from "./gamble/controller/ResultSceneController";
@@ -17,5 +17,5 @@ dMap(GambleSceneController).asSingletone();
 dMap(ResultSceneController).asSingletone();
 dMap(Gamble).asSingletone();
 
-dInject(Gamble);
+dGet(Gamble);
 

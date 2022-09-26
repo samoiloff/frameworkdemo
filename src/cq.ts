@@ -1,4 +1,4 @@
-import {dInject} from "./utils/di/dInject";
+import {dGet} from "./utils/di/dGet";
 import {PersistentCommandQueue} from "./utils/commands/PersistentCommandQueue";
 import {SingleRunCommandQueue} from "./utils/commands/SingleRunCommandQueue";
 import {CommandResolveBase} from "./utils/commands/CommandResolveBase";
@@ -26,11 +26,11 @@ class SceneView {
     this.persistentButton = jQuery("#persistentBtn");
     this.singleButton = jQuery("#singleBtn");
 
-    this.persistentQueue.add(dInject(SetButtonsEnabledCmd, [false]))
+    this.persistentQueue.add(dGet(SetButtonsEnabledCmd, [false]))
     Array.from({length: 10}).forEach(() => {
-      this.persistentQueue.add(dInject(IncrementCounterCmd));
+      this.persistentQueue.add(dGet(IncrementCounterCmd));
     });
-    this.persistentQueue.add(dInject(SetButtonsEnabledCmd, [true]));
+    this.persistentQueue.add(dGet(SetButtonsEnabledCmd, [true]));
 
     this.persistentButton.on("click", () => {
       this.persistentQueue.reset();
@@ -38,11 +38,11 @@ class SceneView {
     });
 
     this.singleButton.on("click", () => {
-      this.singleRunQueue.add(dInject(SetButtonsEnabledCmd, [false]))
+      this.singleRunQueue.add(dGet(SetButtonsEnabledCmd, [false]))
       Array.from({length: 10}).forEach(() => {
-        this.singleRunQueue.add(dInject(IncrementCounterCmd, [-1]));
+        this.singleRunQueue.add(dGet(IncrementCounterCmd, [-1]));
       });
-      this.singleRunQueue.add(dInject(SetButtonsEnabledCmd, [true]));
+      this.singleRunQueue.add(dGet(SetButtonsEnabledCmd, [true]));
       this.singleRunQueue.run();
     });
 
@@ -57,7 +57,7 @@ class SetButtonsEnabledCmd  extends CommandResolveBase {
   }
 
   protected internalRun(): void {
-    const scene: SceneView = dInject(SceneView);
+    const scene: SceneView = dGet(SceneView);
     scene.persistentButton.prop("disabled", !this.enabled);
     scene.singleButton.prop("disabled", !this.enabled);
     this.internalResolve();
@@ -72,7 +72,7 @@ class IncrementCounterCmd extends CommandResolveBase {
   }
 
   protected internalRun(): void {
-    const scene: SceneView = dInject(SceneView);
+    const scene: SceneView = dGet(SceneView);
     scene.counter += this.delta;
     scene.winTitle.text(scene.counter);
     setTimeout(() => {
@@ -88,4 +88,4 @@ dMap(SetButtonsEnabledCmd);
 dMap(IncrementCounterCmd);
 
 // instantiate Scene
-dInject(SceneView);
+dGet(SceneView);

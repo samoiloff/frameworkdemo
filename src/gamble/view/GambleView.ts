@@ -4,7 +4,7 @@ import {GambleScene} from "../scenes/GambleScene";
 import {ViewBase} from "../../utils/mvc/ViewBase";
 import {GambleModel} from "../model/GambleModel";
 import {GambleEvent} from "../events/GambleEvent";
-import {dInject} from "../../utils/di/dInject";
+import {dGet} from "../../utils/di/dGet";
 import {ResultScene} from "../scenes/ResultScene";
 
 export class GambleView extends ViewBase {

@@ -1,7 +1,7 @@
 import Phaser from "phaser";
 import {SceneKey} from "./SceneKey";
 import {MvcScene} from "../../Scenes/MvcScene";
-import {dInject} from "../../utils/di/dInject";
+import {dGet} from "../../utils/di/dGet";
 import {BootSceneController} from "../controller/BootSceneController";
 import {GambleView} from "../view/GambleView";
 import {Gamble} from "../Gamble";
@@ -14,7 +14,7 @@ export class BootScene extends MvcScene {
     super({
       key: SceneKey.BOOT_SCENE
     });
-    this.addController(dInject(BootSceneController, [this]));
+    this.addController(dGet(BootSceneController, [this]));
   }
 
   preload() {
@@ -25,7 +25,7 @@ export class BootScene extends MvcScene {
 
   create() {
     this.scene.sleep();
-    (dInject(GambleModel) as GambleModel).dispatch(GambleEvent.BOOT_COMPLETE);
+    (dGet(GambleModel) as GambleModel).dispatch(GambleEvent.BOOT_COMPLETE);
   }
 
 }

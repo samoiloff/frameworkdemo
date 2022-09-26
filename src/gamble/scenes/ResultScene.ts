@@ -1,6 +1,6 @@
 import {MvcScene} from "../../Scenes/MvcScene";
 import {SceneKey} from "./SceneKey";
-import {dInject} from "../../utils/di/dInject";
+import {dGet} from "../../utils/di/dGet";
 import {GambleEvent} from "../events/GambleEvent";
 import {GambleView} from "../view/GambleView";
 import {GambleModel} from "../model/GambleModel";
@@ -13,14 +13,14 @@ export class ResultScene extends MvcScene {
   protected text: Phaser.GameObjects.Text;
   protected balanceText: Phaser.GameObjects.Text;
 
-  protected view: GambleView = dInject(GambleView);
-  protected model: GambleModel = dInject(GambleModel);
+  protected view: GambleView = dGet(GambleView);
+  protected model: GambleModel = dGet(GambleModel);
 
   constructor() {
     super({
       key: SceneKey.RESULT_SCENE
     });
-    this.addController(dInject(ResultSceneController, [this]));
+    this.addController(dGet(ResultSceneController, [this]));
   }
 
   create() {

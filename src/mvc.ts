@@ -1,5 +1,5 @@
 import {ModelBase} from "./utils/mvc/ModelBase";
-import {dInject} from "./utils/di/dInject";
+import {dGet} from "./utils/di/dGet";
 import {dMap} from "./utils/di/dMap";
 
 const jQuery = require("jquery");
@@ -23,7 +23,7 @@ export class SceneView {
   winTitle: any;
   incButton: any;
 
-  protected model: SceneModel = dInject(SceneModel);
+  protected model: SceneModel = dGet(SceneModel);
 
   private controller: SceneController;
 
@@ -34,13 +34,13 @@ export class SceneView {
     this.winTitle = jQuery("#winTitle");
     this.incButton = jQuery("#incBtn");
 
-    this.controller = dInject(SceneController, [this]); // add controller (mediator)
+    this.controller = dGet(SceneController, [this]); // add controller (mediator)
   }
 
 }
 
 export class SceneController {
-  protected model: SceneModel = dInject(SceneModel);
+  protected model: SceneModel = dGet(SceneModel);
 
   constructor(protected view: SceneView) {
     this.initialize();
@@ -48,7 +48,7 @@ export class SceneController {
 
   initialize(): void {
     this.view.incButton.on("click", () => {
-      (dInject(SceneModel) as SceneModel).setCurrentWin(this.model.currentWin + 1);
+      (dGet(SceneModel) as SceneModel).setCurrentWin(this.model.currentWin + 1);
     });
 
     this.model.addListener(SceneEvent.CURRENT_WIN_CHANGED, (currentWin: number) => {
@@ -64,4 +64,4 @@ dMap(SceneView).asSingletone();
 dMap(SceneController).asSingletone();
 
 // instantiate Scene
-dInject(SceneView);
+dGet(SceneView);

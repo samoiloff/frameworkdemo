@@ -3,7 +3,7 @@ import {CounterView} from "./counter/CounterView";
 import {CounterController} from "./counter/controllers/CounterController";
 import {Counter} from "./counter/Counter";
 import {dMap} from "./utils/di/dMap";
-import {dInject} from "./utils/di/dInject";
+import {dGet} from "./utils/di/dGet";
 import {CounterTimerController} from "./counter/controllers/CounterTimerController";
 import {CounterLabelController} from "./counter/controllers/CounterLabelController";
 
@@ -24,7 +24,7 @@ function mapInjections(): void {
  * instantiation of Counter component
  */
 function createCounter(): Counter {
-  return dInject(Counter);
+  return dGet(Counter);
 }
 
 mapInjections();

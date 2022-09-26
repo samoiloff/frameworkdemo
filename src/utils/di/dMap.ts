@@ -12,9 +12,9 @@ import {InjectionData} from "./InjectionData";
  *
  * dMap(A).toClass(B); // in game module
  *
- * dInject(A) // returns instance of B
+ * dGet(A) // returns instance of B
  *
- * Then class B will be instantiated instead of A in all dInject() calls
+ * Then class B will be instantiated instead of A in all dGet() calls
  *
  * @param cls - class to which injection is attached, used as id of injection
  * @param context - context of injection, required when you want to separate

@@ -1,5 +1,5 @@
 // in core library
-import {dInject} from "./utils/di/dInject";
+import {dGet} from "./utils/di/dGet";
 import {dMap} from "./utils/di/dMap";
 
 class BaseModel {
@@ -12,5 +12,5 @@ class GameModel extends BaseModel {
 }
 dMap(BaseModel).toClass(GameModel); // map injection to child class
 //
-console.log(dInject(BaseModel).message); // outputs "Hello from Game Model";
-// all instantiations via dInject(BaseModel) will return GameModel
+console.log(dGet(BaseModel).message); // outputs "Hello from Game Model";
+// all instantiations via dGet(BaseModel) will return GameModel

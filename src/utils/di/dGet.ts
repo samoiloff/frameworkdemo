@@ -13,6 +13,6 @@ import {DiContextManager} from "./DiContextManager";
  * injections in several contexts
  */
 
-export const dInject = (cls: any, initData?: any[], context?: string): any => {
+export const dGet = (cls: any, initData?: any[], context?: string): any => {
   return DiContextManager.inject(cls, initData, context);
 };

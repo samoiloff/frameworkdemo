@@ -20,8 +20,8 @@ module.exports = {
         "index": path.resolve(SRC,'index.ts'),
         "mvc": path.resolve(SRC,'mvc.ts'),
         "cq": path.resolve(SRC,'cq.ts'),
-        "diInject": path.resolve(SRC,'diInject.ts'),
-        "diMap": path.resolve(SRC,'diMap.ts'),
+        "dGet": path.resolve(SRC,'dGet.ts'),
+        "dMap": path.resolve(SRC,'dMap.ts'),
         "phaser": path.resolve(SRC,'phaser.ts'),
     },
     output: {
